@@ -21,7 +21,7 @@ public class Client {
 	private String prenom;
 	private String email;
 	private String adresse;
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
 	@JoinColumn(name = "id_Conseiller")
 	private Conseiller conseiller;
 	@Embedded
@@ -31,6 +31,14 @@ public class Client {
 
 	public Client() {
 		super();
+	}
+
+	public Client(String nom, String prenom, String email, String adresse) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.adresse = adresse;
 	}
 
 	public Client(String nom, String prenom, String email, String adresse, Conseiller conseiller, Ce compteEpargne,
@@ -93,20 +101,20 @@ public class Client {
 		this.conseiller = conseiller;
 	}
 
-//	public Ce getCompteEpargne() {
-//		return compteEpargne;
-//	}
-//
-//	public void setCompteEpargne(Ce compteEpargne) {
-//		this.compteEpargne = compteEpargne;
-//	}
+	public Ce getCompteEpargne() {
+		return compteEpargne;
+	}
 
-//	public Ccp getCompteCourant() {
-//		return compteCourant;
-//	}
-//
-//	public void setCompteCourant(Ccp compteCourant) {
-//		this.compteCourant = compteCourant;
-//	}
+	public void setCompteEpargne(Ce compteEpargne) {
+		this.compteEpargne = compteEpargne;
+	}
+
+	public Ccp getCompteCourant() {
+		return compteCourant;
+	}
+
+	public void setCompteCourant(Ccp compteCourant) {
+		this.compteCourant = compteCourant;
+	}
 
 }

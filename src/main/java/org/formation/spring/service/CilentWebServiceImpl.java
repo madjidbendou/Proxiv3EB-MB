@@ -6,7 +6,9 @@ import java.util.Optional;
 import javax.ws.rs.core.Response;
 
 import org.formation.spring.dao.CrudClientDAO;
+import org.formation.spring.dao.CrudConseillerDAO;
 import org.formation.spring.model.Client;
+import org.formation.spring.model.Conseiller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +18,15 @@ public class CilentWebServiceImpl implements ClientWebService {
 	@Autowired
 	private CrudClientDAO crudClientDAO;
 
+	@Autowired
+	private CrudConseillerDAO crudConseillerDAO;
+	
+
 	@Override
 	public Client getClient(String id) {
+		Long longId = Long.valueOf(id);
+		Optional<Client> optional = crudClientDAO.findById(longId);
 		
-		Optional<Client> optional = crudClientDAO.findById(Long.valueOf(id));
 		return optional.get();
 	}
 
@@ -30,21 +37,84 @@ public class CilentWebServiceImpl implements ClientWebService {
 
 	@Override
 	public Response updateClient(Client client) {
-//		Client customerToUpdate = crudClientDAO.getOne(client.getId());
-		crudClientDAO.save(client);
-		return Response.ok().build();
+		Client customerToUpdate = crudClientDAO.getOne(client.getId());
+		Response response = null;
+		if (customerToUpdate != null) {
+			crudClientDAO.save(client);
+			response = Response.ok(client).build();
+		} else {
+			response = Response.notModified().build();
+		}
+		return response;
 	}
 
 	@Override
 	public Response addClient(Client client) {
 		crudClientDAO.save(client);
-		return Response.ok().build();
+		return Response.ok("Le client a bien été créé").build();
 	}
 
 	@Override
 	public Response deleteClients(String id) {
-		crudClientDAO.deleteById(Long.valueOf(id));;
-		return Response.ok().build();
+		Long longId = Long.valueOf(id);
+		Client atrouver = crudClientDAO.getOne(longId);
+		Response response = null;
+		if (atrouver != null) {
+			crudClientDAO.deleteById(longId);
+			response = Response.ok("le client a été supprimé").build();
+		} else {
+			response = Response.notModified().build();
+		}
+		return response;
+	}
+
+// **********************************************************************
+	// Conseiller méthodes
+	@Override
+	public Conseiller getConseiller(String id) {
+		Long longId = Long.valueOf(id);
+		Optional<Conseiller> optional = crudConseillerDAO.findById(longId);
+		System.out.println("hello conseiller");
+		return optional.get();
+	}
+
+	@Override
+	public List<Conseiller> getConseillers() {
+		return crudConseillerDAO.findAll();		
+	}
+
+	@Override
+	public Response updateConseiller(Conseiller conseiller) {
+		
+		Conseiller advisorToUpdate = crudConseillerDAO.getOne(conseiller.getId());
+		Response response = null;
+		if (advisorToUpdate != null) {
+			crudConseillerDAO.save(conseiller);
+			response = Response.ok(conseiller).build();
+		} else {
+			response = Response.notModified().build();
+		}
+		return response;
+	}
+
+	@Override
+	public Response addConseiller(Conseiller conseiller) {
+		crudConseillerDAO.save(conseiller);
+		return Response.ok("Le conseiller a bien été créé").build();
+	}
+
+	@Override
+	public Response deleteConseillers(String id) {
+		Long longId = Long.valueOf(id);
+		Conseiller conseillerAtrouver = crudConseillerDAO.getOne(longId);
+		Response response = null;
+		if (conseillerAtrouver != null) {
+			crudConseillerDAO.deleteById(longId);
+			response = Response.ok("le conseiller a été supprimé").build();
+		} else {
+			response = Response.notModified().build();
+		}
+		return response;
 	}
 
 }

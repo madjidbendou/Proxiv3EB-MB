@@ -47,7 +47,7 @@ public class Conseiller {
 		super();
 	}
 
-	public double getId() {
+	public Long getId() {
 		return id;
 	}
 
