@@ -24,8 +24,8 @@ public class SimpleLayerJpaApplicationTests {
 		assertNotNull(crudClientDAO);
 //		Adresse a = new Adresse(1, "kjhk", "kjhkjh");
 //		
-		Conseiller co = new Conseiller("louis", "ekjhfze", "fzelkjfz", "ekzjfhzle");
-		Client c = new Client("client de test", "iuiuyhiu", "lkj", "kjhkjh", co);
+		Conseiller co = new Conseiller("premier", "conseiller", "de la", "banque");
+		Client c = new Client("client de test", "a persister", "a voir sur mozilla", "pas encore de compte", co);
 	
 
 //		
