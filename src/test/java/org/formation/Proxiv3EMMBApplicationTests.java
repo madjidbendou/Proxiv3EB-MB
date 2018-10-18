@@ -26,13 +26,14 @@ public class Proxiv3EMMBApplicationTests {
 		assertNotNull(crudClientDAO);
 //		Adresse a = new Adresse(1, "kjhk", "kjhkjh");
 //		
+
 		Conseiller co = new Conseiller("louis", "ekjhfze", "fzelkjfz", "ekzjfhzle");
 		double b= Math.random() * 1000000;
 		Ccp ccp = new Ccp((long)b, 123456 );
 		double c= Math.random() * 1000000;
 		Ce ce= new Ce((long)c, 65432);
 		Client r = new Client("eleonore", "laura", "erica.baggi@gmail.com","3 rue des chataigners",co, ce, ccp);
-	
+
 
 //		
 		crudClientDAO.save(r);
