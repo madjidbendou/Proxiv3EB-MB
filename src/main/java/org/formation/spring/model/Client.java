@@ -1,4 +1,4 @@
- package org.formation.spring.model;
+package org.formation.spring.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 public class Client {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -24,26 +24,26 @@ public class Client {
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	@JoinColumn(name = "id_Conseiller")
 	private Conseiller conseiller;
-//	@Embedded
-//	private Ce compteEpargne;
-//
-//	@Embedded
-//	private Ccp compteCourant;
+	@Embedded
+	private Ce compteEpargne;
+	@Embedded
+	private Ccp compteCourant;
 
 	public Client() {
 		super();
 	}
 
-	
-	public Client(String nom, String prenom, String email, String adresse, Conseiller conseiller) {
-	super();
-	this.nom = nom;
-	this.prenom = prenom;
-	this.email = email;
-	this.adresse = adresse;
-	this.conseiller = conseiller;
-}
-
+	public Client(String nom, String prenom, String email, String adresse, Conseiller conseiller, Ce compteEpargne,
+			Ccp compteCourant) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.adresse = adresse;
+		this.conseiller = conseiller;
+		this.compteEpargne = compteEpargne;
+		this.compteCourant = compteCourant;
+	}
 
 	public Long getId() {
 		return id;
@@ -109,5 +109,4 @@ public class Client {
 //		this.compteCourant = compteCourant;
 //	}
 
-  
 }
