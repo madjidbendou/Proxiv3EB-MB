@@ -21,9 +21,6 @@ public class Client {
 	private String prenom;
 	private String email;
 	private String adresse;
-//	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
-//	@JoinColumn(name = "id_Conseiller")
-//	private Conseiller conseiller;
 	@Embedded
 	private Ce compteEpargne;
 	@Embedded
@@ -41,14 +38,12 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public Client(String nom, String prenom, String email, String adresse, Ce compteEpargne,
-			Ccp compteCourant) {
+	public Client(String nom, String prenom, String email, String adresse, Ce compteEpargne, Ccp compteCourant) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.adresse = adresse;
-//		this.conseiller = conseiller;
 		this.compteEpargne = compteEpargne;
 		this.compteCourant = compteCourant;
 	}
@@ -92,14 +87,6 @@ public class Client {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-
-//	public Conseiller getConseiller() {
-//		return conseiller;
-//	}
-//
-//	public void setConseiller(Conseiller conseiller) {
-//		this.conseiller = conseiller;
-//	}
 
 	public Ce getCompteEpargne() {
 		return compteEpargne;

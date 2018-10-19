@@ -8,10 +8,8 @@ import javax.ws.rs.core.Response;
 import org.formation.spring.dao.CrudClientDAO;
 import org.formation.spring.dao.CrudConseillerDao;
 import org.formation.spring.model.Ccp;
-//import org.formation.spring.dao.CrudConseillerDAO;
 import org.formation.spring.model.Client;
 import org.formation.spring.model.Conseiller;
-//import org.formation.spring.model.Conseiller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,13 +58,8 @@ public class CilentWebServiceImpl implements ClientWebService {
 	public Response deleteClientById(String id) {
 		Long longId = Long.valueOf(id);
 
-//		Response response = null;
-//		if (atrouver != null) {
 		crudClientDAO.deleteById(longId);
-//			response = 
-//		} else {
-//			response = Response.notModified().build();
-//		}
+
 		return Response.ok("le client a été supprimé").build();
 	}
 

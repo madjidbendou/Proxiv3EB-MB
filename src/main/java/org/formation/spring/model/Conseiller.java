@@ -22,18 +22,8 @@ public class Conseiller {
 	private String prenom;
 	private String login;
 	private String password;
-//	@OneToMany(mappedBy = "conseiller", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-//	private Set<Client> listeClient = new HashSet<>();
 
-//	public Set<Client> getListeClient() {
-//		return listeClient;
-//	}
-//
-//	public void setListeClient(Set<Client> listeClient) {
-//		this.listeClient = listeClient;
-//	}
-//
-//
+
 	public Conseiller(String nom, String prenom, String login, String password) {
 		super();
 		this.nom = nom;
@@ -86,8 +76,5 @@ public class Conseiller {
 		this.password = password;
 	}
 
-//	public void addClient(Client c) {
-//		listeClient.add(c);
-//		c.setConseiller(this);
-//	}
+
 }
