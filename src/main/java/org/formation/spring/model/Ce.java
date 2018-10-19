@@ -3,8 +3,8 @@ package org.formation.spring.model;
 import javax.persistence.Embeddable;
 
 /**
- * La classe Ce correspond au compte épargne. 
- * @author Baggi/Bendou
+ * La classe Ce correspond au compte épargne, il est 'embeddable' car c'est un attribut de Client, il se trouvera dans la même table dans la BDD. 
+ * @author Baggi/Bendou;
  *
  */
 @Embeddable

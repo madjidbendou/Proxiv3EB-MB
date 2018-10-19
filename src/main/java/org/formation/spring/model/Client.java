@@ -1,19 +1,29 @@
 package org.formation.spring.model;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * 
+ * 
+ * Ceci est la classe Client elle permet d'instancier des clients et de pouvoir
+ * leur attribuer un compte courant et un compte epargne lors de la création.
+ * Les comptes seront supprimés si le client est supprimé.
+ * 
+ * @author Baggi/Bendou;
+ *
+ */
 @XmlRootElement
 @Entity
 public class Client {
-
+	// Attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -21,14 +31,14 @@ public class Client {
 	private String prenom;
 	private String email;
 	private String adresse;
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
-	@JoinColumn(name = "id_Conseiller")
-	private Conseiller conseiller;
+
+// Les comptes ne pourront pas exister sans le client en base de donnée. Il seront dans la même table.
 	@Embedded
 	private Ce compteEpargne;
 	@Embedded
 	private Ccp compteCourant;
 
+	// Constructeurs
 	public Client() {
 		super();
 	}
@@ -41,18 +51,17 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public Client(String nom, String prenom, String email, String adresse, Conseiller conseiller, Ce compteEpargne,
-			Ccp compteCourant) {
+	public Client(String nom, String prenom, String email, String adresse, Ce compteEpargne, Ccp compteCourant) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.adresse = adresse;
-		this.conseiller = conseiller;
 		this.compteEpargne = compteEpargne;
 		this.compteCourant = compteCourant;
 	}
 
+	// Getters & setters
 	public Long getId() {
 		return id;
 	}
@@ -91,14 +100,6 @@ public class Client {
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
-	}
-
-	public Conseiller getConseiller() {
-		return conseiller;
-	}
-
-	public void setConseiller(Conseiller conseiller) {
-		this.conseiller = conseiller;
 	}
 
 	public Ce getCompteEpargne() {
