@@ -29,7 +29,9 @@ public class Conseiller {
 	private String login;
 	private String password;
 
+
 	// Constructeurs
+
 	public Conseiller(String nom, String prenom, String login, String password) {
 		super();
 		this.nom = nom;
@@ -82,5 +84,6 @@ public class Conseiller {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 
 }

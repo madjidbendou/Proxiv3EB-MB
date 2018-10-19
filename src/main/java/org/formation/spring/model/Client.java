@@ -1,13 +1,11 @@
 package org.formation.spring.model;
 
-//import javax.persistence.CascadeType;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -32,7 +30,9 @@ public class Client {
 	private String email;
 	private String adresse;
 
+
 // Les comptes ne pourront pas exister sans le client en base de donnée. Il seront dans la même table.
+
 	@Embedded
 	private Ce compteEpargne;
 	@Embedded

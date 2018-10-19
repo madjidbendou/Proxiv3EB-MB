@@ -11,9 +11,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class Ccp {
+	//Attributs
 	private Long numeroCompteCourant;
 	private double soldeBancaireCourant;
 
+	//Constructeurs
 	public Ccp() {
 		super();
 	}
@@ -24,6 +26,7 @@ public class Ccp {
 		this.soldeBancaireCourant = soldeBancaireCourant;
 	}
 
+	//Getters & setters
 	public Long getNumeroCompteCourant() {
 		return numeroCompteCourant;
 	}

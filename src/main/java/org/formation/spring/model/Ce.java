@@ -9,9 +9,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class Ce {
+	//Attributs
 	private Long numeroCompteEpargne;
 	private double soldeBancaireEpagne;
 	
+	//Constructeurs
 	public Ce() {
 		super();
 	}
@@ -22,6 +24,7 @@ public class Ce {
 		this.soldeBancaireEpagne = soldeBancaireEpagne;
 	}
 
+	//Getters & setters
 	public Long getNumeroCompteEpargne() {
 		return numeroCompteEpargne;
 	}
