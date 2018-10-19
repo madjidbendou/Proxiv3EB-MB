@@ -62,7 +62,7 @@ public interface ClientWebService {
 	Response deleteConseillers(@PathParam("id") String id);
 	
 	@PUT
-    @Path("/fairevirement/{id1}/{id2}/{montant}/")
-    Response faireVirment(@PathParam("id1") String id1,@PathParam("id2") String id2,@PathParam("montant") String montant);
+    @Path("/clients/virement/{id1}/{id2}/{montant}/")
+    Response faireVirment(@PathParam("id1") String id1, @PathParam("id2") String id2, @PathParam("montant") String montant);
 
 }
