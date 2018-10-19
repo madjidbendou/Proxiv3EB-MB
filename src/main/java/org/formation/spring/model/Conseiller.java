@@ -22,7 +22,7 @@ public class Conseiller {
 	private String prenom;
 	private String login;
 	private String password;
-	@OneToMany(mappedBy = "conseiller", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "conseiller", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
 	private Set<Client> listeClient = new HashSet<>();
 
 	public Set<Client> getListeClient() {
