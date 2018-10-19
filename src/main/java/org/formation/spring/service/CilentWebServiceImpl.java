@@ -6,9 +6,12 @@ import java.util.Optional;
 import javax.ws.rs.core.Response;
 
 import org.formation.spring.dao.CrudClientDAO;
-import org.formation.spring.dao.CrudConseillerDAO;
+import org.formation.spring.dao.CrudConseillerDao;
+import org.formation.spring.model.Ccp;
+//import org.formation.spring.dao.CrudConseillerDAO;
 import org.formation.spring.model.Client;
 import org.formation.spring.model.Conseiller;
+//import org.formation.spring.model.Conseiller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,14 +22,13 @@ public class CilentWebServiceImpl implements ClientWebService {
 	private CrudClientDAO crudClientDAO;
 
 	@Autowired
-	private CrudConseillerDAO crudConseillerDAO;
-	
+	private CrudConseillerDao crudConseillerDAO;
 
 	@Override
 	public Client getClient(String id) {
 		Long longId = Long.valueOf(id);
 		Optional<Client> optional = crudClientDAO.findById(longId);
-		
+
 		return optional.get();
 	}
 
@@ -38,12 +40,12 @@ public class CilentWebServiceImpl implements ClientWebService {
 	@Override
 	public Response updateClient(Client client) {
 		Client customerToUpdate = crudClientDAO.getOne(client.getId());
-		Response response = null;
+		Response response;
 		if (customerToUpdate != null) {
 			crudClientDAO.save(client);
 			response = Response.ok(client).build();
 		} else {
-			response = Response.notModified().build();
+			response = Response.notModified("client non trouvé").build();
 		}
 		return response;
 	}
@@ -55,20 +57,21 @@ public class CilentWebServiceImpl implements ClientWebService {
 	}
 
 	@Override
-	public Response deleteClients(String id) {
+	public Response deleteClientById(String id) {
 		Long longId = Long.valueOf(id);
-		Client atrouver = crudClientDAO.getOne(longId);
-		Response response = null;
-		if (atrouver != null) {
-			crudClientDAO.deleteById(longId);
-			response = Response.ok("le client a été supprimé").build();
-		} else {
-			response = Response.notModified().build();
-		}
-		return response;
+
+//		Response response = null;
+//		if (atrouver != null) {
+		crudClientDAO.deleteById(longId);
+//			response = 
+//		} else {
+//			response = Response.notModified().build();
+//		}
+		return Response.ok("le client a été supprimé").build();
 	}
 
 // **********************************************************************
+	// ***********************************************************************
 	// Conseiller méthodes
 	@Override
 	public Conseiller getConseiller(String id) {
@@ -80,12 +83,12 @@ public class CilentWebServiceImpl implements ClientWebService {
 
 	@Override
 	public List<Conseiller> getConseillers() {
-		return crudConseillerDAO.findAll();		
+		return crudConseillerDAO.findAll();
 	}
 
 	@Override
 	public Response updateConseiller(Conseiller conseiller) {
-		
+
 		Conseiller advisorToUpdate = crudConseillerDAO.getOne(conseiller.getId());
 		Response response = null;
 		if (advisorToUpdate != null) {
@@ -115,6 +118,27 @@ public class CilentWebServiceImpl implements ClientWebService {
 			response = Response.notModified().build();
 		}
 		return response;
+	}
+
+	@Override
+	public Response faireVirment(String id1, String id2, String montant) {
+		System.out.println(id1+ id2+ montant);
+		Long longId = Long.valueOf(id1);
+		Optional<Client> optional = crudClientDAO.findById(longId);
+		Client a= optional.get();
+		System.out.println(a.getCompteCourant().getSoldeBancaireCourant());
+		Long longId2 = Long.valueOf(id2);
+		Optional<Client> optional2 = crudClientDAO.findById(longId2);
+		Client b= optional2.get();
+		double montant2 = Double.valueOf(montant);
+		Ccp cc = a.getCompteCourant();
+		cc.setSoldeBancaireCourant(cc.getSoldeBancaireCourant() - montant2);
+		Ccp ccp2 = b.getCompteCourant();
+		ccp2.setSoldeBancaireCourant(ccp2.getSoldeBancaireCourant() + montant2);
+
+		crudClientDAO.save(a);
+		crudClientDAO.save(b);
+		return Response.ok().build();
 	}
 
 }

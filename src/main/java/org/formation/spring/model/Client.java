@@ -1,13 +1,13 @@
 package org.formation.spring.model;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -21,9 +21,9 @@ public class Client {
 	private String prenom;
 	private String email;
 	private String adresse;
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
-	@JoinColumn(name = "id_Conseiller")
-	private Conseiller conseiller;
+//	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
+//	@JoinColumn(name = "id_Conseiller")
+//	private Conseiller conseiller;
 	@Embedded
 	private Ce compteEpargne;
 	@Embedded
@@ -41,14 +41,14 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public Client(String nom, String prenom, String email, String adresse, Conseiller conseiller, Ce compteEpargne,
+	public Client(String nom, String prenom, String email, String adresse, Ce compteEpargne,
 			Ccp compteCourant) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.adresse = adresse;
-		this.conseiller = conseiller;
+//		this.conseiller = conseiller;
 		this.compteEpargne = compteEpargne;
 		this.compteCourant = compteCourant;
 	}
@@ -93,13 +93,13 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public Conseiller getConseiller() {
-		return conseiller;
-	}
-
-	public void setConseiller(Conseiller conseiller) {
-		this.conseiller = conseiller;
-	}
+//	public Conseiller getConseiller() {
+//		return conseiller;
+//	}
+//
+//	public void setConseiller(Conseiller conseiller) {
+//		this.conseiller = conseiller;
+//	}
 
 	public Ce getCompteEpargne() {
 		return compteEpargne;
