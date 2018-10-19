@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 
  * @author BENDOU/BAGGI
  */
-public interface CrudConseillerDao extends JpaRepository<Conseiller, Long> {
+public interface CrudConseillerDAO extends JpaRepository<Conseiller, Long> {
 
 }

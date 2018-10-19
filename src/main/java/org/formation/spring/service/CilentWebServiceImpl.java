@@ -6,7 +6,7 @@ import java.util.Optional;
 import javax.ws.rs.core.Response;
 
 import org.formation.spring.dao.CrudClientDAO;
-import org.formation.spring.dao.CrudConseillerDao;
+import org.formation.spring.dao.CrudConseillerDAO;
 import org.formation.spring.model.Ccp;
 import org.formation.spring.model.Client;
 import org.formation.spring.model.Conseiller;
@@ -20,7 +20,7 @@ public class CilentWebServiceImpl implements ClientWebService {
 	private CrudClientDAO crudClientDAO;
 
 	@Autowired
-	private CrudConseillerDao crudConseillerDAO;
+	private CrudConseillerDAO crudConseillerDAO;
 
 	@Override
 	public Client getClient(String id) {

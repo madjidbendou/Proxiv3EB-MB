@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"org.formation"},{"l":"org.formation.spring.dao"},{"l":"org.formation.spring.model"},{"l":"org.formation.spring.service"}]

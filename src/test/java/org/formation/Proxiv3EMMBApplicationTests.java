@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import javax.ws.rs.core.Response;
 import org.formation.spring.dao.CrudClientDAO;
-import org.formation.spring.dao.CrudConseillerDao;
+import org.formation.spring.dao.CrudConseillerDAO;
 import org.formation.spring.model.Ccp;
 import org.formation.spring.model.Ce;
 import org.formation.spring.model.Client;
@@ -37,7 +37,7 @@ public class Proxiv3EMMBApplicationTests {
 	private ClientWebService clientWebService;
 
 	@Autowired
-	private CrudConseillerDao crudConseillerDao;
+	private CrudConseillerDAO crudConseillerDao;
 
 	@Test
 	public void testClientService() {
