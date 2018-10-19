@@ -7,6 +7,8 @@ import org.formation.spring.model.Ccp;
 import org.formation.spring.model.Ce;
 import org.formation.spring.model.Client;
 import org.formation.spring.model.Conseiller;
+//import org.formation.spring.model.Conseiller;
+import org.formation.spring.service.ClientWebService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,26 +21,38 @@ public class Proxiv3EMMBApplicationTests {
 
 	@Autowired
 	private CrudClientDAO crudClientDAO;
+	
+	@Autowired
+	private ClientWebService clientWebService;
 
 	@Test
 	public void testClientService() {
 
-		assertNotNull(crudClientDAO);
+//		assertNotNull(crudClientDAO);
 //		Adresse a = new Adresse(1, "kjhk", "kjhkjh");
 //		
 
-		Conseiller co = new Conseiller("louis", "ekjhfze", "fzelkjfz", "ekzjfhzle");
-		double b= Math.random() * 1000000;
-		Ccp ccp = new Ccp((long)b, 123456 );
-		double c= Math.random() * 1000000;
-		Ce ce= new Ce((long)c, 65432);
-		Client r = new Client("eleonore", "laura", "erica.baggi@gmail.com","3 rue des chataigners",co, ce, ccp);
-
-
+//		Conseiller co = new Conseiller("Louis", "Vuitton", "+login+", "+password+");
+//		double b= Math.random() * 1000000;
+//		Ccp ccp = new Ccp((long)b, 150 );
+//		double c= Math.random() * 1000000;
+//		Ce ce= new Ce((long)c, 20);
+//		Client r = new Client("Karim", "Soleil", "adressemail@gmail.com","15 avenue du Général de Gaulle", co, ce, ccp);
 //		
-		crudClientDAO.save(r);
+//		clientWebService.addClient(r);
+//		
+//		Client c5= crudClientDAO.getOne(1L);
+//		System.out.println(c5.getNom());
+//		clientWebService.deleteClients("1");
+//		clientWebService.deleteClients("3");
 		
-//		List<Client> byNom = crudClientDAO.findAllClientByNom("client de test");
+//		Client c2= clientWebService.getClient("2");
+//		c2.setNom("madjid");
+//		clientWebService.updateClient(c2);
+		//		
+//		clientWebService.faireVirment("10","12", "-1000");
+		
+		//		List<Client> byNom = crudClientDAO.findAllClientByNom("client de test");
 //		
 //		System.out.println(byNom);
 //		assertEquals(2, byNom.size());

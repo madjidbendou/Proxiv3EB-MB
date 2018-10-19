@@ -10,10 +10,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
+
+
+
+
 
 @XmlRootElement
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Conseiller {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +34,9 @@ public class Conseiller {
 	private String prenom;
 	private String login;
 	private String password;
+
+	@XmlTransient
+	@JsonBackReference
 	@OneToMany(mappedBy = "conseiller", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
 	private Set<Client> listeClient = new HashSet<>();
 

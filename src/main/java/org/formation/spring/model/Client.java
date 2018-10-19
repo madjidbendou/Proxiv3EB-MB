@@ -8,10 +8,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @XmlRootElement
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Client {
 
 	@Id
@@ -23,6 +32,7 @@ public class Client {
 	private String adresse;
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
 	@JoinColumn(name = "id_Conseiller")
+	@XmlTransient
 	private Conseiller conseiller;
 	@Embedded
 	private Ce compteEpargne;
@@ -41,7 +51,7 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public Client(String nom, String prenom, String email, String adresse, Conseiller conseiller, Ce compteEpargne,
+	public Client(String nom, String prenom, String email, String adresse,Conseiller conseiller, Ce compteEpargne,
 			Ccp compteCourant) {
 		super();
 		this.nom = nom;
@@ -92,7 +102,7 @@ public class Client {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-
+@JsonBackReference
 	public Conseiller getConseiller() {
 		return conseiller;
 	}

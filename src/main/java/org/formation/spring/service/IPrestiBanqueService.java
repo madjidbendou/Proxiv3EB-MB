@@ -10,6 +10,7 @@ public interface IPrestiBanqueService {
 	public void	deleteClient(long idClient);
 	public Client editClient(long idClient);
 	public void	updateClient(Client c);
+
 	//public List<Client>	chercherClients(String	motCle);
 
 }

@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.formation.spring.model.Client;
+//import org.formation.spring.model.Conseiller;
 import org.formation.spring.model.Conseiller;
 
 @Produces({"application/json","application/xml"})
@@ -38,7 +39,7 @@ public interface ClientWebService {
 
 	@DELETE
 	@Path("/clients/{id}/")
-	Response deleteClients(@PathParam("id") String id);
+	Response deleteClientById(@PathParam("id") String id);
 	
 	@GET
 	@Path("/conseillers/{id}/")
@@ -59,5 +60,9 @@ public interface ClientWebService {
 	@DELETE
 	@Path("/conseillers/{id}/")
 	Response deleteConseillers(@PathParam("id") String id);
+	
+	@PUT
+    @Path("/fairevirement/{id1}/{id2}/{montant}/")
+    Response faireVirment(@PathParam("id1") String id1,@PathParam("id2") String id2,@PathParam("montant") String montant);
 
 }
