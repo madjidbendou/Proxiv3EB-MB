@@ -1,20 +1,26 @@
 package org.formation.spring.model;
 
-
-//import java.util.HashSet;
-//import java.util.Set;
-//
-//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * 
+ * 
+ * Ceci est la classe Conseiller, elle aura sa propre table dans la base de
+ * données. Les clients ne sont pas encore reliés au conseiller, cela est en
+ * cours dans une autre branche de Git 'clientrelieconseiller'.
+ * 
+ * @author Baggi/Bendou;
+ *
+ */
 @XmlRootElement
 @Entity
 public class Conseiller {
+
+	// Attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -23,6 +29,8 @@ public class Conseiller {
 	private String login;
 	private String password;
 
+
+	// Constructeurs
 
 	public Conseiller(String nom, String prenom, String login, String password) {
 		super();
@@ -36,6 +44,7 @@ public class Conseiller {
 		super();
 	}
 
+	// Getters & setters
 	public Long getId() {
 		return id;
 	}

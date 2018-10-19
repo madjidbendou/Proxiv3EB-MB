@@ -3,6 +3,7 @@ package org.formation.spring.dao;
 import org.formation.spring.model.Conseiller;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+
 /**
  * Le CrudConseiller est une interface qui étend JpaRepository. Une API
  * (Springadata) permet de bénéficier d'opérations CRUD de base de la classe

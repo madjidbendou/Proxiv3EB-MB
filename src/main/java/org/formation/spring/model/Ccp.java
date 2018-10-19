@@ -4,16 +4,19 @@ import javax.persistence.Embeddable;
 
 /**
  * 
- * La classe Ccp correspond au compte courant
+ * La classe Ccp correspond au compte courant, il est 'embeddable' car c'est un
+ * attribut de Client, il se trouvera dans la même table dans la BDD.
  * 
- * @author Baggi/Bendou
+ * @author Baggi/Bendou;
  *
  */
 @Embeddable
 public class Ccp {
+	// Attributs
 	private Long numeroCompteCourant;
 	private double soldeBancaireCourant;
 
+	// Constructeurs
 	public Ccp() {
 		super();
 	}
@@ -24,6 +27,7 @@ public class Ccp {
 		this.soldeBancaireCourant = soldeBancaireCourant;
 	}
 
+	// Getters & setters
 	public Long getNumeroCompteCourant() {
 		return numeroCompteCourant;
 	}

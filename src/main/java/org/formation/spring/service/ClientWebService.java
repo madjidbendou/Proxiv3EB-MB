@@ -80,4 +80,9 @@ public interface ClientWebService {
 	Response faireVirment(@PathParam("id1") String id1, @PathParam("id2") String id2,
 			@PathParam("montant") String montant);
 
+	@PUT
+	@Path("/clients/virementce/{id1}/{id2}/{montant}/")
+	Response faireVirmentce(@PathParam("id1") String id1, @PathParam("id2") String id2,
+			@PathParam("montant") String montant);
+
 }

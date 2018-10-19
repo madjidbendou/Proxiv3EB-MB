@@ -1,7 +1,5 @@
 package org.formation.spring.dao;
 
-import java.util.List;
-
 import org.formation.spring.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,5 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author BENDOU/BAGGI
  */
 public interface CrudClientDAO extends JpaRepository<Client, Long> {
+
 
 }

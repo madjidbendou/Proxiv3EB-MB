@@ -2,8 +2,11 @@ package org.formation;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
 import java.util.List;
+
 import javax.ws.rs.core.Response;
+
 import org.formation.spring.dao.CrudClientDAO;
 import org.formation.spring.dao.CrudConseillerDAO;
 import org.formation.spring.model.Ccp;
