@@ -77,7 +77,6 @@ public class CilentWebServiceImpl implements ClientWebService {
 	public Conseiller getConseiller(String id) {
 		Long longId = Long.valueOf(id);
 		Optional<Conseiller> optional = crudConseillerDAO.findById(longId);
-		System.out.println("hello conseiller");
 		return optional.get();
 	}
 
@@ -122,7 +121,7 @@ public class CilentWebServiceImpl implements ClientWebService {
 
 	@Override
 	public Response faireVirment(String id1, String id2, String montant) {
-		System.out.println(id1+ id2+ montant);
+		
 		Long longId = Long.valueOf(id1);
 		Optional<Client> optional = crudClientDAO.findById(longId);
 		Client a= optional.get();
@@ -138,7 +137,7 @@ public class CilentWebServiceImpl implements ClientWebService {
 
 		crudClientDAO.save(a);
 		crudClientDAO.save(b);
-		return Response.ok().build();
+		return Response.ok("Le virement de "+montant+" euros a bien été effectué").build();
 	}
 
 }
